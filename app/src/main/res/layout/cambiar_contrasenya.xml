@@ -23,7 +23,7 @@
 
     <!-- Título -->
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/contrasenaOlvidada"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -100,6 +100,7 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         app:cornerRadius="8dp" />
+
 
 
 </LinearLayout>

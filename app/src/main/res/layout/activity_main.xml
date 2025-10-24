@@ -2,139 +2,186 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Titulo_Landing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Inicio de sesión"
+        android:layout_marginTop="20dp"
+        android:text="¡Busca tu plaza ideal!"
+        android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Correo electrónico"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Contraseña"
-        app:layout_constraintStart_toStartOf="@+id/LoginCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/LoginCorreo" />
-
-    <EditText
-        android:id="@+id/LoginCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="185dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/LoginContrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Registro"
+        android:id="@+id/textView10"
+        android:layout_width="224dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:text="Queremos que encuentres de manera rápida y cómoda el mejor sitio más cercano a ti o a tu destino, y siempre de la forma más asequible posible."
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/Titulo_Landing"
+        app:layout_constraintStart_toStartOf="@+id/Titulo_Landing"
+        app:layout_constraintTop_toBottomOf="@+id/Titulo_Landing" />
+
+    <Button
+        android:id="@+id/btn_Registrate"
+        style="@style/Btn_Landing"
+        android:layout_marginTop="16dp"
+        android:text="Registrate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="136dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="¿Ya tienes cuenta? ¡Inicia sesión y no pierdas tus ventajas!"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/LoginContrasena"
-        app:layout_constraintTop_toBottomOf="@+id/LoginContrasena" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_Registrate"
+        app:layout_constraintStart_toStartOf="@+id/btn_Registrate"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Registrate" />
 
-    <EditText
-        android:id="@+id/RegistroNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+    <Button
+        android:id="@+id/Btn_Inicio_Sesión"
+        style="@style/Btn_Landing"
+        android:layout_marginTop="16dp"
+        android:text="Inicia Sesión"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <EditText
-        android:id="@+id/RegistroCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="193dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Btn_Inicio_Sesión" />
 
-    <EditText
-        android:id="@+id/RegistroContrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <EditText
-        android:id="@+id/RegistroConfirmarContrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="198dp"
+        android:layout_height="196dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:srcCompat="@drawable/img" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Nombre"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        android:id="@+id/contrasenaOlvidada"
+        android:layout_width="110dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Disfruta de  todas nuestras ventajas en la  app."
+        android:textColor="#FAFAFA"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Correo electrónico"
-        app:layout_constraintStart_toStartOf="@+id/RegistroNombre"
-        app:layout_constraintTop_toBottomOf="@+id/RegistroNombre" />
+        android:layout_marginTop="24dp"
+        android:text="INICIA SESIÓN YA!"
+        android:textColor="#FAFAFA"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/contrasenaOlvidada"
+        app:layout_constraintStart_toStartOf="@+id/contrasenaOlvidada"
+        app:layout_constraintTop_toBottomOf="@+id/contrasenaOlvidada" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Contraseña"
-        app:layout_constraintStart_toStartOf="@+id/RegistroCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/RegistroCorreo" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Confirmar contraseña"
-        app:layout_constraintStart_toStartOf="@+id/RegistroContrasena"
-        app:layout_constraintTop_toBottomOf="@+id/RegistroContrasena" />
+
+    <LinearLayout
+        android:id="@+id/bottom_tabs"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/tab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Tab Mapas -->
+        <LinearLayout
+            android:id="@+id/mapas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/imagen_tab_ubicacion" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mapas"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Tab Home -->
+        <LinearLayout
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/imagen_tab_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Tab Cuenta -->
+        <LinearLayout
+            android:id="@+id/cuenta"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/imagen_tab_cuenta" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cuenta"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

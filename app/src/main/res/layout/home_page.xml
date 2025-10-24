@@ -116,6 +116,7 @@
 
         <!-- Tab Mapas -->
         <LinearLayout
+            android:id="@+id/mapas"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -136,6 +137,7 @@
 
         <!-- Tab Home -->
         <LinearLayout
+            android:id="@+id/home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -156,6 +158,7 @@
 
         <!-- Tab Cuenta -->
         <LinearLayout
+            android:id="@+id/cuenta"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
