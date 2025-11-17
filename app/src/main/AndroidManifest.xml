@@ -21,8 +21,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CambiarContrasenya"
+            android:exported="true"/>
+        <activity
+            android:name=".CambiarContrasenyaPrimero"
+            android:exported="true"/>
+        <activity
+            android:name=".CambiarCorreo"
+            android:exported="true"/>
+        <activity
+            android:name=".CambiarNombre"
+            android:exported="true"/>
+        <activity
+            android:name=".HomePage"
+            android:exported="true"/>
+        <activity
             android:name=".LoginActivity"
             android:exported="true"/>
+        <activity
+            android:name=".Perfil"
+            android:exported="true"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".Reserva"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
