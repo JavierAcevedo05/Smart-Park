@@ -39,6 +39,9 @@
             android:name=".LoginActivity"
             android:exported="true"/>
         <activity
+            android:name=".ListaParkings"
+            android:exported="true"/>
+        <activity
             android:name=".Perfil"
             android:exported="true"/>
         <activity
