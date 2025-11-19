@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -42,6 +44,12 @@
             android:name=".ListaParkings"
             android:exported="true"/>
         <activity
+            android:name=".ListaReservas"
+            android:exported="true"/>
+        <activity
+            android:name=".Mapa"
+            android:exported="true"/>
+        <activity
             android:name=".Perfil"
             android:exported="true"/>
         <activity
@@ -49,6 +57,9 @@
             android:exported="true"/>
         <activity
             android:name=".Reserva"
+            android:exported="true"/>
+        <activity
+            android:name=".ReservaActivity"
             android:exported="true"/>
 
     </application>
