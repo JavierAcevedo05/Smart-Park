@@ -96,6 +96,11 @@ public class Perfil extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button misReservasBtn = findViewById(R.id.misReservas);
+        misReservasBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(Perfil.this, ListaReservas.class);
+            startActivity(intent);
+        });
 
         // Botón de cerrar sesión
         Button cerrarSesionBtn = findViewById(R.id.cerrarSesion);

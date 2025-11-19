@@ -63,9 +63,8 @@ public class HomePage extends AppCompatActivity {
         // Botón "Reservar"
         Button reservarBtn = findViewById(R.id.btn_Reservar);
         reservarBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(HomePage.this, Reserva.class);
+            Intent intent = new Intent(HomePage.this, ListaParkings.class);
             startActivity(intent);
-            finish();
         });
 
         // Tab "Home"
@@ -79,6 +78,13 @@ public class HomePage extends AppCompatActivity {
         LinearLayout cuentaTab = findViewById(R.id.cuenta);
         cuentaTab.setOnClickListener(view -> {
             Intent intent = new Intent(HomePage.this, Perfil.class);
+            startActivity(intent);
+        });
+
+        // Tab "Mapas"
+        LinearLayout mapasTab = findViewById(R.id.mapas);
+        mapasTab.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePage.this, Mapa.class);
             startActivity(intent);
         });
     }

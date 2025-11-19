@@ -9,6 +9,10 @@ public class Parking {
     private int plazasLibres;
     private double latitud;
     private double longitud;
+    private String id;
+    public void setId(String id) { this.id = id; }
+    public String getId() { return id; }
+
 
     public Parking() {}
 

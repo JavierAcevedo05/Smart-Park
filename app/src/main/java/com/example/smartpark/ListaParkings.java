@@ -43,6 +43,7 @@ public class ListaParkings extends AppCompatActivity {
                     listaParkings.clear();
                     for (DocumentSnapshot doc : queryDocumentSnapshots) {
                         Parking p = doc.toObject(Parking.class);
+                        p.setId(doc.getId());
                         listaParkings.add(p);
                     }
                     adapter.notifyDataSetChanged();
