@@ -1,5 +1,7 @@
 package com.example.smartpark;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +21,6 @@ import java.util.List;
 
 public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder> {
     private List<ReservaUsuario> lista;
-
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public ReservaAdapter(List<ReservaUsuario> lista) {
@@ -41,7 +42,15 @@ public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ReservaV
         holder.txtNombre.setText(r.getNombreParking());
         holder.txtFecha.setText("Fecha: " + r.getFecha());
 
+        // Botón Eliminar
         holder.btnEliminar.setOnClickListener(v -> eliminarReserva(r, position, v));
+
+        // Botón Farolillo
+        holder.btnFarolillo.setOnClickListener(v -> {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, ParkingMqttActivity.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -51,21 +60,20 @@ public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ReservaV
 
     static class ReservaViewHolder extends RecyclerView.ViewHolder {
         TextView txtNombre, txtFecha;
-        Button btnEliminar;
+        Button btnEliminar, btnFarolillo;
 
         ReservaViewHolder(View itemView) {
             super(itemView);
             txtNombre = itemView.findViewById(R.id.txtNombreParkingReserva);
             txtFecha = itemView.findViewById(R.id.txtFechaReserva);
             btnEliminar = itemView.findViewById(R.id.btnEliminarReserva);
+            btnFarolillo = itemView.findViewById(R.id.btnFarolillo);
         }
     }
 
-    /** 🔹 Elimina la reserva del usuario y actualiza el parking */
     private void eliminarReserva(ReservaUsuario reserva, int position, View v) {
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // 1️⃣ Eliminar la reserva del usuario
         DocumentReference reservaRef = db.collection("usuarios")
                 .document(uid)
                 .collection("reservas")
@@ -73,7 +81,6 @@ public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ReservaV
 
         reservaRef.delete()
                 .addOnSuccessListener(aVoid -> {
-                    // 2️⃣ Restar una plaza del parking correspondiente
                     DocumentReference reservaDiaRef = db.collection("parkings")
                             .document(reserva.getParkingId())
                             .collection("reservas")
@@ -81,7 +88,6 @@ public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ReservaV
 
                     reservaDiaRef.update("plazasReservadas", FieldValue.increment(-1));
 
-                    // 3️⃣ Actualizar lista en la app
                     lista.remove(position);
                     notifyItemRemoved(position);
 

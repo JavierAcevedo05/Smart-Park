@@ -47,9 +47,8 @@ public class CambiarCorreo extends AppCompatActivity {
                 return;
             }
 
-            // 🔐 Reautenticamos al usuario antes de cambiar el correo
             String actualEmail = user.getEmail();
-            String contrasenaTemporal = "contraseñaDelUsuario"; // ⚠️ O pide la contraseña actual en un EditText
+            String contrasenaTemporal = "contraseñaDelUsuario";
 
             AuthCredential credential = EmailAuthProvider.getCredential(actualEmail, contrasenaTemporal);
 

@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button volverBtn = findViewById(R.id.volver3);
         volverBtn.setOnClickListener(view -> {
-            finish(); // cierra esta actividad y vuelve a la anterior
+            finish();
         });
 
         // Configurar Google Sign-In

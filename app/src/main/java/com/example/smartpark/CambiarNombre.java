@@ -53,7 +53,7 @@ public class CambiarNombre extends AppCompatActivity {
                         .update("nombre", nuevoNombre)
                         .addOnSuccessListener(aVoid -> {
                             Toast.makeText(this, "Nombre actualizado correctamente", Toast.LENGTH_SHORT).show();
-                            finish(); // vuelve a la pantalla anterior
+                            finish();
                         })
                         .addOnFailureListener(e -> {
                             Toast.makeText(this, "Error al actualizar el nombre", Toast.LENGTH_SHORT).show();

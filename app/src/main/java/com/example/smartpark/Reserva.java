@@ -17,7 +17,7 @@ public class Reserva extends AppCompatActivity {
 
         Button volverBtn = findViewById(R.id.btn_Volver);
         volverBtn.setOnClickListener(view -> {
-            finish(); // cierra esta actividad y vuelve a la anterior
+            finish();
         });
 
         // Tab "Home"
