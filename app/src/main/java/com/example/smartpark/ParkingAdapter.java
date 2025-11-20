@@ -35,7 +35,7 @@ public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.ParkingV
         Parking p = lista.get(position);
         holder.txtNombre.setText(p.getNombre());
         holder.txtDireccion.setText(p.getDireccion());
-        holder.txtPlazas.setText("Plazas: " + p.getPlazasLibres() + "/" + p.getPlazas());
+        holder.txtPlazas.setText("Plazas: " + p.getPlazas());
 
         // --- Botón MAPA ---
         holder.btnMapa.setOnClickListener(v -> {
@@ -58,8 +58,12 @@ public class ParkingAdapter extends RecyclerView.Adapter<ParkingAdapter.ParkingV
 
         // --- Botón RESERVAR ---
         holder.btnReservar.setOnClickListener(v -> {
-            // De momento no hace nada, solo un placeholder
-            // Más adelante aquí se podría abrir una nueva Activity o un diálogo de confirmación
+            Intent intent = new Intent(v.getContext(), ReservaActivity.class);
+            intent.putExtra("parkingId", p.getId());
+            intent.putExtra("nombreParking", p.getNombre());
+            intent.putExtra("plazasTotales", p.getPlazas());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            v.getContext().startActivity(intent);
         });
     }
 

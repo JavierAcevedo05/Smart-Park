@@ -48,17 +48,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarCorreo3" />
+        app:layout_constraintTop_toBottomOf="@+id/misReservas" />
 
     <Button
-        android:id="@+id/cambiarCorreo3"
+        android:id="@+id/misReservas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
         android:backgroundTint="#F60303"
-        android:text="Historial de Reservas"
+        android:text="Mis Reservas"
         app:cornerRadius="8px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
