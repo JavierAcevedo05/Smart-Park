@@ -122,4 +122,9 @@ public class Perfil extends AppCompatActivity {
         Intent i = new Intent(this, AcercaDeActivity.class);
         startActivity(i);
     }
+
+    public void lanzarPreguntas(View view){
+        Intent i = new Intent(this, PreguntasFrecuentesActivity.class);
+        startActivity(i);
+    }
 }

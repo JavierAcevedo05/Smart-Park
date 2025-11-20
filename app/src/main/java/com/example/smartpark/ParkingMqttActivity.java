@@ -56,7 +56,7 @@ public class ParkingMqttActivity extends AppCompatActivity implements MqttCallba
             options.setCleanSession(true);
             options.setUserName(user);
             options.setPassword(pass.toCharArray());
-            options.setSocketFactory(getSocketFactory()); // TLS obligatorio
+            options.setSocketFactory(getSocketFactory());
             options.setKeepAliveInterval(60);
 
             client.setCallback(this);
@@ -83,6 +83,9 @@ public class ParkingMqttActivity extends AppCompatActivity implements MqttCallba
         return context.getSocketFactory();
     }
 
+    // ----------------------------------------------------------
+    // 🔥 FIX REAL → Enviar JSON como Kotlin {"led":1}
+    // ----------------------------------------------------------
     private void enviarComandoLed(int valor) {
         try {
             if (client == null || !client.isConnected()) {
@@ -90,14 +93,12 @@ public class ParkingMqttActivity extends AppCompatActivity implements MqttCallba
                 return;
             }
 
-            // Puedes cambiar esto a "1" y "0" si el M5 no entiende JSON
-            String json = String.valueOf(valor);
-            MqttMessage message = new MqttMessage(json.getBytes());
-            message.setQos(0);
-            message.setRetained(false);
+            // Aquí estaba tu error → antes enviabas SOLO "1" o "0"
+            String json = "{\"led\":" + valor + "}";
 
+            MqttMessage message = new MqttMessage(json.getBytes());
+            message.setQos(1);
             client.publish(topicCmd, message);
-            Log.d(TAG, "Comando publicado en " + topicCmd + ": " + json);
 
             estadoLed = valor;
 
@@ -105,11 +106,12 @@ public class ParkingMqttActivity extends AppCompatActivity implements MqttCallba
                     btnToggle.setText((valor == 1) ? "Apagar LED" : "Encender LED")
             );
 
+            Log.d(TAG, "Comando enviado: " + json);
+
         } catch (Exception e) {
             Log.e(TAG, "Error publicando comando MQTT", e);
         }
     }
-
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
