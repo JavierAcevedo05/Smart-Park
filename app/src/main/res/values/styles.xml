@@ -3,22 +3,20 @@
     <style name="Btn_Landing">
         <item name="android:layout_width">220dp</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:backgroundTint">#F60303</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:backgroundTint">#E72941</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">20sp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="strokeWidth">2dp</item>
 
 
     </style>
     <style name="Btn_Perfil">
         <item name="android:layout_width">280dp</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:backgroundTint">#F60303</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:backgroundTint">#E72941</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">14sp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="strokeWidth">2dp</item>
     </style>
 
     <style name="Btn_Perfil_Oscuro">
@@ -28,17 +26,15 @@
         <item name="android:textColor">#F5F5F5</item>
         <item name="android:textSize">14sp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="strokeWidth">2dp</item>
     </style>
 
     <style name="Btn_Pequeño">
         <item name="android:layout_width">120dp</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:backgroundTint">#F60303</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:backgroundTint">#E72941</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">14sp</item>
         <item name="cornerRadius">8dp</item>
-        <item name="strokeWidth">2dp</item>
     </style>
 
 

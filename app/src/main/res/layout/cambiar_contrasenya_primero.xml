@@ -81,7 +81,6 @@
         android:backgroundTint="@color/red"
         android:text="Enviar correo"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="14sp"
         app:cornerRadius="8dp" />
 
@@ -120,7 +119,6 @@
         android:backgroundTint="@color/red"
         android:text="Confirmar"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="14sp"
         app:cornerRadius="8dp" />
 
