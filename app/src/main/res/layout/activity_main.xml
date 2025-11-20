@@ -33,7 +33,9 @@
         android:id="@+id/btn_Registrate"
         style="@style/Btn_Landing"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#E72941"
         android:text="Registrate"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -54,7 +56,9 @@
         android:id="@+id/Btn_Inicio_Sesión"
         style="@style/Btn_Landing"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#E72941"
         android:text="Inicia Sesión"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -105,19 +109,28 @@
         app:layout_constraintStart_toStartOf="@+id/contrasenaOlvidada"
         app:layout_constraintTop_toBottomOf="@+id/contrasenaOlvidada" />
 
-
+    <View
+        android:id="@+id/view2"
+        android:layout_width="411dp"
+        android:layout_height="25dp"
+        android:background="#E72941"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/bottom_tabs"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_margin="16dp"
-        android:orientation="horizontal"
+        android:background="#E72941"
         android:gravity="center"
-        android:background="@drawable/tab"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- Tab Mapas -->
         <LinearLayout

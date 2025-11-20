@@ -80,7 +80,6 @@
         android:backgroundTint="@color/red"
         android:text="Confirmar cambio de nombre"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="14sp"
         app:cornerRadius="8dp" />
 

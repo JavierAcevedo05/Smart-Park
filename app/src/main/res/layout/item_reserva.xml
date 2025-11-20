@@ -28,14 +28,16 @@
 
     <Button
         android:id="@+id/btnEliminarReserva"
-        android:text="Eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/red"
+        android:text="Eliminar" />
 
     <Button
         android:id="@+id/btnFarolillo"
-        android:text="Farolillo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:text="Farolillo" />
 </LinearLayout>

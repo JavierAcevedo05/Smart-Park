@@ -97,7 +97,6 @@
         android:layout_marginRight="50dp"
         android:backgroundTint="@color/red"
         android:text="Confirmar cambio de contraseña"
-        android:textColor="@color/black"
         android:textSize="14sp"
         app:cornerRadius="8dp" />
 
