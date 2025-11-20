@@ -5,6 +5,16 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="Parkings">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Parkings (1)">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Parkings (2)">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+
     </selectionStates>
   </component>
 </project>
