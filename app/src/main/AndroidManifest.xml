@@ -72,8 +72,8 @@
             android:name=".AcercaDeActivity"
             android:label="Acerca de ..."
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
-
-
+        <activity android:name=".PreguntasFrecuentesActivity"
+            android:label="Preguntas frecuentes"/>
     </application>
 
 </manifest>

@@ -30,6 +30,7 @@
         android:layout_marginEnd="64dp"
         android:backgroundTint="#373333"
         android:text="Preguntas frecuentes"
+        android:onClick="lanzarPreguntas"
         app:cornerRadius="8px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
