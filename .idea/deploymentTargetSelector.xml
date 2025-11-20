@@ -13,16 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="Parkings (2)">
+      <SelectionState runConfigName="ParkingMqttActivity (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ListaParkings">
+      <SelectionState runConfigName="ParkingMqttActivity (2)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LoginActivity">
+      <SelectionState runConfigName="ParkingMqttActivity (3)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ParkingMqttActivity">
+      <SelectionState runConfigName="Perfil">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Mapa">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

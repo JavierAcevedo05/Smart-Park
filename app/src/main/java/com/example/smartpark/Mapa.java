@@ -1,6 +1,7 @@
 package com.example.smartpark;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -105,7 +106,6 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
         }
     }
 
-
     private void cargarParkings() {
         CollectionReference parkingsRef = db.collection("parkings");
         parkingsRef.get()
@@ -122,11 +122,27 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
                             }
 
                             mMap.addMarker(new MarkerOptions()
-                                    .position(ubicacionParking)
-                                    .title(nombreParking)
-                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                                            .position(ubicacionParking)
+                                            .title(nombreParking)
+                                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)))
+                                    .setTag(doc.getId());
                         }
                     }
+
+                    mMap.setOnMarkerClickListener(marker -> {
+                        String parkingId = (String) marker.getTag();
+                        String nombreParking = marker.getTitle();
+
+                        if (parkingId != null) {
+                            Intent intent = new Intent(Mapa.this, ReservaActivity.class);
+                            intent.putExtra("parkingId", parkingId);
+                            intent.putExtra("nombreParking", nombreParking);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(this, "Parking sin información", Toast.LENGTH_SHORT).show();
+                        }
+                        return true;
+                    });
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error al cargar los parkings", Toast.LENGTH_SHORT).show();
