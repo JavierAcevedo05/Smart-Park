@@ -54,10 +54,9 @@ public class ListaReservas extends AppCompatActivity {
                 .addOnSuccessListener(querySnapshot -> {
                     listaReservas.clear();
                     for (DocumentSnapshot doc : querySnapshot) {
-                        // 👇 Usa la clase ReservaUsuario
                         ReservaUsuario r = doc.toObject(ReservaUsuario.class);
                         if (r != null) {
-                            r.setId(doc.getId()); // ID para eliminarla
+                            r.setId(doc.getId());
                             listaReservas.add(r);
                         }
                     }

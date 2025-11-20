@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button volverBtn = findViewById(R.id.volver4);
         volverBtn.setOnClickListener(view -> {
-            finish(); // cierra esta actividad y vuelve a la anterior
+            finish();
         });
 
 

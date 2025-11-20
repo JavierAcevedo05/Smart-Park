@@ -72,7 +72,6 @@ public class ReservaActivity extends AppCompatActivity {
         btnConfirmar.setOnClickListener(v -> confirmarReserva());
     }
 
-    /** 🔹 Actualiza el número de plazas libres para la fecha seleccionada */
     private void actualizarPlazasLibres(String fecha) {
         DocumentReference reservaDiaRef = db.collection("parkings")
                 .document(parkingId)

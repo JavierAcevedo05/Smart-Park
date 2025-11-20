@@ -16,10 +16,9 @@ public class CambiarContrasenyaPrimero extends AppCompatActivity {
 
         Button volverBtn = findViewById(R.id.atras);
         volverBtn.setOnClickListener(view -> {
-            finish(); // cierra esta actividad y vuelve a la anterior
+            finish();
         });
 
-        // Botón "Confirmar" → CambiarContrasena
         Button confirmarBtn = findViewById(R.id.btnConfirm);
         confirmarBtn.setOnClickListener(view -> {
             Intent intent = new Intent(CambiarContrasenyaPrimero.this, CambiarContrasenya.class);

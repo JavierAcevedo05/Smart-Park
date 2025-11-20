@@ -86,10 +86,10 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
                     .addOnSuccessListener(location -> {
                         if (location != null) {
                             mostrarUbicacionActual(location);
-                            cargarParkings(); // 🔹 Llamamos aquí para mostrar los parkings
+                            cargarParkings();
                         } else {
                             Toast.makeText(this, "No se pudo obtener la ubicación actual", Toast.LENGTH_SHORT).show();
-                            cargarParkings(); // igualmente mostramos los parkings aunque no haya ubicación
+                            cargarParkings();
                         }
                     });
         }
