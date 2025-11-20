@@ -18,14 +18,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
 
-    private GoogleMap mapa;
     private FusedLocationProviderClient fusedLocationClient;
+    private GoogleMap mMap;
+    private FirebaseFirestore db;
 
-    // Launcher para pedir permisos
     private ActivityResultLauncher<String[]> locationPermissionLauncher;
 
     @Override
@@ -34,93 +39,97 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.mapa);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        db = FirebaseFirestore.getInstance();
 
-        // Configurar launcher de permisos
-        locationPermissionLauncher =
-                registerForActivityResult(
-                        new ActivityResultContracts.RequestMultiplePermissions(),
-                        result -> {
-                            Boolean fineLocation = result.getOrDefault(
-                                    Manifest.permission.ACCESS_FINE_LOCATION, false);
-                            Boolean coarseLocation = result.getOrDefault(
-                                    Manifest.permission.ACCESS_COARSE_LOCATION, false);
+        // Pedir permisos
+        locationPermissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestMultiplePermissions(),
+                result -> {
+                    Boolean fine = result.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false);
+                    Boolean coarse = result.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false);
+                    if (fine || coarse) {
+                        inicializarMapa();
+                    } else {
+                        Toast.makeText(this, "Permiso de ubicación denegado", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
-                            if (fineLocation || coarseLocation) {
-                                initMap();
-                            } else {
-                                Toast.makeText(this,
-                                        "Permiso de ubicación denegado",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-        // Comprobar permisos
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             locationPermissionLauncher.launch(new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
             });
         } else {
-            initMap();
+            inicializarMapa();
         }
     }
 
-    // Inicializa el fragmento de Google Maps
-    private void initMap() {
-        SupportMapFragment mapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.mapa);
-
+    private void inicializarMapa() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         if (mapFragment != null) {
-            mapFragment.getMapAsync(this);   // llamará a onMapReady()
+            mapFragment.getMapAsync(this);
         }
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        mapa = googleMap;
-        mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap = googleMap;
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        // Comprobamos permisos antes de activar Mi ubicación
-        boolean fineGranted = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-        boolean coarseGranted = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-        if (fineGranted || coarseGranted) {
-            try {
-                mapa.setMyLocationEnabled(true);
-                mapa.getUiSettings().setMyLocationButtonEnabled(true);
-                mapa.getUiSettings().setZoomControlsEnabled(true);
-
-                // Centrar cámara en la última ubicación conocida
-                fusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(location -> {
-                            if (location != null) {
-                                moverCamaraALocalizacion(location);
-                            } else {
-                                Toast.makeText(this,
-                                        "No se pudo obtener la ubicación",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-            } catch (SecurityException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Toast.makeText(this,
-                    "Sin permiso de ubicación, no se puede mostrar Mi ubicación",
-                    Toast.LENGTH_SHORT).show();
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(location -> {
+                        if (location != null) {
+                            mostrarUbicacionActual(location);
+                            cargarParkings(); // 🔹 Llamamos aquí para mostrar los parkings
+                        } else {
+                            Toast.makeText(this, "No se pudo obtener la ubicación actual", Toast.LENGTH_SHORT).show();
+                            cargarParkings(); // igualmente mostramos los parkings aunque no haya ubicación
+                        }
+                    });
         }
     }
 
-    private void moverCamaraALocalizacion(@NonNull Location location) {
-        LatLng actual = new LatLng(location.getLatitude(), location.getLongitude());
-        // Zoom 15 aprox. nivel calle
-        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(actual, 15f));
+    private void mostrarUbicacionActual(Location location) {
+        LatLng ubicacion = new LatLng(location.getLatitude(), location.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f));
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        }
+    }
+
+
+    private void cargarParkings() {
+        CollectionReference parkingsRef = db.collection("parkings");
+        parkingsRef.get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        Double lat = doc.getDouble("latitud");
+                        Double lon = doc.getDouble("longitud");
+
+                        if (lat != null && lon != null) {
+                            LatLng ubicacionParking = new LatLng(lat, lon);
+                            String nombreParking = doc.getString("nombre");
+                            if (nombreParking == null || nombreParking.isEmpty()) {
+                                nombreParking = "Parking sin nombre";
+                            }
+
+                            mMap.addMarker(new MarkerOptions()
+                                    .position(ubicacionParking)
+                                    .title(nombreParking)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al cargar los parkings", Toast.LENGTH_SHORT).show();
+                });
     }
 }
