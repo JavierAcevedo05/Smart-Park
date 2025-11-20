@@ -97,6 +97,13 @@ public class Perfil extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Tab "Mapas"
+        LinearLayout mapasTab = findViewById(R.id.mapas);
+        mapasTab.setOnClickListener(view -> {
+            Intent intent = new Intent(Perfil.this, Mapa.class);
+            startActivity(intent);
+        });
+
         Button misReservasBtn = findViewById(R.id.misReservas);
         misReservasBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Perfil.this, ListaReservas.class);
