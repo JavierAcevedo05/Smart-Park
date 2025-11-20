@@ -67,6 +67,13 @@ public class HomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Botón "Al Mapa"
+        Button alMapaBtn = findViewById(R.id.al_Mapa);
+        alMapaBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePage.this, Mapa.class);
+            startActivity(intent);
+        });
+
         // Tab "Home"
         LinearLayout homeTab = findViewById(R.id.home);
         homeTab.setOnClickListener(view -> {
