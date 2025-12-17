@@ -109,18 +109,6 @@
         app:layout_constraintStart_toStartOf="@+id/contrasenaOlvidada"
         app:layout_constraintTop_toBottomOf="@+id/contrasenaOlvidada" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="411dp"
-        android:layout_height="25dp"
-        android:background="#E72941"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <LinearLayout
         android:id="@+id/bottom_tabs"
         android:layout_width="0dp"
